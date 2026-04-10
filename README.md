@@ -16,7 +16,7 @@ I focus on writing clean, efficient solutions — whether it's
 <p>
 🏆 CodeChef 2⋆ Rated<br>
 🧩 Building AI systems with RAG & n8n<br>
-🎯 Focus: <strong>DSA • AI Agents • Backend</strong>
+🎯 Focus: <strong>DSA • ML • CP</strong>
 </p>
 <p>
 <a href="mailto:shashank99674@gmail.com">
