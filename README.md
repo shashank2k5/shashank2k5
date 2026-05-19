@@ -5,7 +5,7 @@ AI Engineer ♣ Problem Solver ♣ Builder ♣ ML Engineer
 </p>
 <hr style="width:60%;">
 <p>
-Welcome to my corner of the internet (づ｡◕‿‿◕｡)づ<br><br>
+Welcome to my corner of the internet &nbsp;&nbsp; づ(｡◕‿‿◕｡)づ<br><br>
 I enjoy solving algorithmic problems and building practical AI-powered software.
 I focus on writing clean, efficient solutions — whether it's
 <strong>competitive programming</strong>,
@@ -14,7 +14,9 @@ I focus on writing clean, efficient solutions — whether it's
 </p>
 <p><strong>I love turning ideas into working systems.</strong></p>
 <p>
-🏆 CodeChef 2⋆ Rated<br>
+☀️ GSSoC '26 <br>
+🔷 ACM Summer School - NLP  <br>
+🏆 CodeChef 2⋆ Rated<br>  
 🧩 Building AI systems with RAG & n8n<br>
 🎯 Focus: <strong>DSA • ML • CP</strong>
 </p>
@@ -33,6 +35,9 @@ I focus on writing clean, efficient solutions — whether it's
 </a>
 <a href="https://www.codechef.com/users/shankie_2k5">
   <img src="https://img.shields.io/badge/CodeChef-black?style=flat&logo=codechef">
+</a>
+  <a href="https://leetcode.com/u/shankie2k5/">
+  <img src="https://img.shields.io/badge/LeetCode-black?style=flat&logo=leetcode">
 </a>
 </p>
 </div>
