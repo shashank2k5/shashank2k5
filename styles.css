@@ -163,6 +163,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   transition: border-color 0.3s ease;
 }
 
+.brand-mark img {
+  width: 88%;
+  height: 88%;
+  border-radius: 50%;
+  object-fit: contain;
+  object-position: center center;
+}
+
 .brand-copy { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .site-nav { gap: 4px; font-size: 0.9rem; font-weight: 900; }
@@ -317,6 +325,33 @@ h3 { margin-bottom: 12px; font-size: 1.45rem; line-height: 1.08; }
 
 .panel-terminal { top: 24px; right: 2px; width: min(440px, 96%); overflow: hidden; transform: rotate(1deg); }
 
+.panel-terminal {
+  background:
+    linear-gradient(180deg, rgba(255,253,245,0.12), transparent 28%),
+    var(--paper-light);
+}
+
+.panel-terminal:hover,
+.panel-terminal:focus-within {
+  background: var(--blue);
+  color: #fffdf5;
+}
+
+.panel-terminal:hover .panel-bar,
+.panel-terminal:focus-within .panel-bar {
+  background: #fffdf5;
+  color: #101010;
+}
+
+.panel-terminal:hover pre,
+.panel-terminal:focus-within pre {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10), transparent 34%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 10px),
+    #1f57c7;
+  color: #fffdf5;
+}
+
 .panel-bar {
   display: flex;
   align-items: center;
@@ -328,21 +363,53 @@ h3 { margin-bottom: 12px; font-size: 1.45rem; line-height: 1.08; }
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.8rem;
   color: #101010;
-  transition: border-color 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-.panel-bar span {
+.panel-bar strong {
+  margin-left: 6px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.panel-control {
   width: 12px;
   height: 12px;
   border: 2px solid rgba(16,16,16,0.5);
   border-radius: 50%;
-  background: var(--paper-light);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+  transition: transform 160ms ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.control-close { background: #e93c2f; }
+.control-minimize { background: #f1c84b; }
+.control-expand { background: #169b62; }
+
+.panel-terminal:hover .panel-control,
+.panel-terminal:focus-within .panel-control {
+  border-color: rgba(16,16,16,0.42);
+}
+
+.panel-terminal:hover .control-close,
+.panel-terminal:focus-within .control-close {
+  background: #ff6b5f;
+}
+
+.panel-terminal:hover .control-minimize,
+.panel-terminal:focus-within .control-minimize {
+  background: #ffd86b;
+}
+
+.panel-terminal:hover .control-expand,
+.panel-terminal:focus-within .control-expand {
+  background: #2fcb87;
 }
 
 pre {
   margin: 0;
   padding: 28px;
   background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), transparent 34%),
     repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 10px),
     var(--pre-bg);
   color: var(--pre-color);
@@ -350,10 +417,42 @@ pre {
   font-size: clamp(0.92rem, 1.5vw, 1.08rem);
   line-height: 1.8;
   white-space: pre-wrap;
+  text-shadow: 0 0 12px rgba(255,255,255,0.06);
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+.terminal-line {
+  display: block;
+}
+
+.terminal-line-highlight {
+  transition: color 160ms ease;
+}
+
+.terminal-line-highlight:hover,
+.terminal-line-highlight:focus-visible {
+  color: inherit;
+  outline: none;
+}
+
 .panel-ticket { left: 0; top: 260px; width: min(360px, 82%); padding: 24px; transform: rotate(-2.5deg); }
+
+.panel-ticket:hover,
+.panel-ticket:focus-within {
+  background: var(--ink);
+  color: var(--paper-light);
+}
+
+.panel-ticket:hover .ticket-label,
+.panel-ticket:focus-within .ticket-label {
+  background: var(--paper-light);
+  color: var(--ink);
+}
+
+.panel-ticket:hover p,
+.panel-ticket:focus-within p {
+  color: rgba(255,253,245,0.78);
+}
 
 .ticket-label,
 .card-index {
@@ -386,8 +485,19 @@ pre {
   transform: rotate(2.4deg);
 }
 
+.panel-metric:hover,
+.panel-metric:focus-within {
+  background: var(--paper-light);
+  color: var(--ink);
+}
+
 .panel-metric span { display: block; margin-bottom: 6px; font-family: Anton, Impact, sans-serif; font-size: 4rem; line-height: 1; }
 .panel-metric p { margin-bottom: 0; font-weight: 800; line-height: 1.25; color: #fffdf5; }
+
+.panel-metric:hover p,
+.panel-metric:focus-within p {
+  color: var(--ink);
+}
 
 .sound-card {
   right: 238px;
@@ -454,7 +564,7 @@ pre {
 
 .intro-section {
   display: grid;
-  grid-template-columns: 92px minmax(0, 1fr) minmax(280px, 0.88fr);
+  grid-template-columns: 132px minmax(0, 1fr) minmax(280px, 0.88fr);
   gap: 28px;
   align-items: start;
   border-top: 5px solid var(--ink);
@@ -463,16 +573,42 @@ pre {
 }
 
 .section-marker {
+  position: relative;
+  display: grid;
+  width: 132px;
+  aspect-ratio: 0.86;
+  justify-self: start;
+  border: 4px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--green);
+  box-shadow: 5px 5px 0 var(--ink);
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-marker img {
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  border-radius: calc(var(--radius) + 2px);
+  object-fit: cover;
+  object-position: center 18%;
+  filter: saturate(1.05) contrast(1.03);
+}
+
+.section-marker span {
+  position: absolute;
+  left: 8px;
+  top: 8px;
   display: grid;
   place-items: center;
-  aspect-ratio: 1;
-  border: 4px solid var(--ink);
-  border-radius: 50%;
-  background: var(--paper-light);
-  box-shadow: 5px 5px 0 var(--ink);
+  min-width: 48px;
+  min-height: 32px;
+  border: 3px solid var(--ink);
+  background: var(--yellow);
+  color: #101010;
   font-family: Anton, Impact, sans-serif;
-  font-size: 2.4rem;
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1.35rem;
 }
 
 .section-heading { max-width: 780px; margin-bottom: 28px; }
@@ -565,15 +701,25 @@ pre {
   padding: 8px 10px;
   border: 3px solid currentColor;
   border-radius: 999px;
-  background: rgba(255,253,245,0.75);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--paper-light);
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.78rem;
   font-weight: 800;
 }
 
-.work-card.dark .meta-list li { border-color: #fffdf5; background: transparent; color: #fffdf5; }
-[data-theme="dark"] .work-card.dark .meta-list li { border-color: #101010; background: transparent; color: #101010; }
+[data-theme="dark"] .work-card:not(.dark) .meta-list li {
+  border-color: #101010;
+  background: #101010;
+  color: #f0ead8;
+}
+
+.work-card.dark .meta-list li { border-color: #fffdf5; background: #fffdf5; color: #101010; }
+[data-theme="dark"] .work-card.dark .meta-list li {
+  border-color: #101010;
+  background: #101010;
+  color: #f0ead8;
+}
 
 .project-links { position: relative; z-index: 1; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 
@@ -598,6 +744,28 @@ pre {
 
 .work-card.dark .project-links a { border-color: #fffdf5; background: transparent; color: #fffdf5; }
 [data-theme="dark"] .work-card.dark .project-links a { border-color: #101010; background: transparent; color: #101010; }
+
+.hyperlink-section {
+  margin-top: 12px;
+}
+
+.hyperlink-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 800;
+}
+
+.hyperlink-text:hover,
+.hyperlink-text:focus-visible {
+  text-decoration-thickness: 3px;
+  outline: none;
+}
 
 /* ── SKILLS ── */
 .skills-section { border-bottom: 5px solid var(--ink); transition: border-color 0.3s ease; }
@@ -714,12 +882,26 @@ pre {
   .site-header { position: relative; top: auto; flex-wrap: wrap; }
   .site-nav { order: 3; width: 100%; justify-content: space-between; overflow-x: auto; }
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 54px; }
-  .hero-board { min-height: 520px; }
+  .hero-board { min-height: 560px; }
+  .panel-terminal { width: min(470px, 78%); }
+  .panel-ticket { top: 284px; width: min(390px, 72%); }
+  .panel-metric { right: 20px; bottom: 30px; }
   .intro-section,
   .work-grid,
   .skills-layout,
   .edu-grid { grid-template-columns: 1fr; }
-  .work-card.large { min-height: 380px; }
+  .work-grid { grid-template-rows: none; }
+  .work-card.large,
+  .work-card.tone,
+  .work-card.dark {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .work-card,
+  .work-card.large {
+    min-height: auto;
+  }
+  .work-card h3 { font-size: clamp(2rem, 8vw, 3rem); }
 }
 
 @media (max-width: 620px) {
@@ -731,11 +913,55 @@ pre {
   .hero-copy, .work-card, .skill-panel, .archive-list li, .contact-section, .edu-card { padding: 20px; box-shadow: 5px 5px 0 var(--ink); }
   h1 { font-size: 3.6rem; }
   h2 { font-size: 2.5rem; }
-  .hero-board { min-height: 560px; }
-  .panel-terminal { right: 0; width: 100%; }
-  .panel-ticket { top: 252px; width: 86%; }
-  .panel-metric { right: 8px; bottom: 28px; width: 190px; }
-  .sound-card { right: 18px; top: 206px; width: 100px; height: 100px; font-size: 1.55rem; }
+  .hero-board {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    min-height: auto;
+  }
+  .panel,
+  .sound-card {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    transform: none;
+  }
+  .section-marker { width: min(150px, 48vw); }
+  .panel-terminal { overflow: hidden; }
+  .panel-ticket { padding: 20px; }
+  .panel-ticket h2 { font-size: 2.25rem; }
+  .panel-metric { max-width: 230px; justify-self: end; }
+  .sound-card {
+    justify-self: start;
+    width: 104px;
+    height: 104px;
+    font-size: 1.55rem;
+  }
+  pre { padding: 20px; font-size: 0.88rem; }
+  .work-grid { gap: 14px; }
+  .work-card::after {
+    right: -70px;
+    bottom: -70px;
+    width: 150px;
+    height: 150px;
+  }
+  .work-card h3 {
+    max-width: 100%;
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .work-card p { font-size: 0.95rem; line-height: 1.6; }
+  .meta-list { gap: 7px; margin-top: 18px; }
+  .meta-list li {
+    padding: 7px 8px;
+    border-width: 2px;
+    font-size: 0.7rem;
+  }
+  .project-links { gap: 8px; margin-top: 22px; }
+  .project-links a {
+    flex: 1 1 120px;
+    min-height: 42px;
+  }
   .marquee-strip { justify-content: flex-start; }
   .archive-list li { grid-template-columns: 1fr; }
 }
