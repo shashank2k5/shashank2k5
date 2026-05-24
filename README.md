@@ -27,7 +27,7 @@ I focus on writing clean, efficient solutions — whether it's
 <a href="https://www.linkedin.com/in/shashank2k5">
   <img src="https://img.shields.io/badge/LinkedIn-black?style=flat&logo=linkedin">
 </a>
-  <a href="https://drive.google.com/file/d/1qbx1-IhU8tbJJNnNV9eWp1-PlDLlwWXJ/view?usp=sharing">
+  <a href="https://drive.google.com/file/d/1JljC9b6r45m_nnJ8O9ZP8NpJrtnRcwss/view?usp=sharing">
   <img src="https://img.shields.io/badge/Resume-black?style=flat&logo=googledocs">
 </a>
 <a href="https://codeforces.com/profile/shankie2k5">
