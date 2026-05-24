@@ -69,3 +69,5 @@ I focus on writing clean, efficient solutions — whether it's
   <img src="https://img.shields.io/badge/Pinecone-black?style=flat&logo=pinecone">
   <img src="https://img.shields.io/badge/n8n-black?style=flat&logo=n8n">
 </p>
+
+<!-- abcd -->
